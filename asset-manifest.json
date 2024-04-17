@@ -1,13 +1,17 @@
 {
   "files": {
-    "main.css": "/van-voyage/static/css/main.7acaea2f.css",
-    "main.js": "/van-voyage/static/js/main.07d3183d.js",
+    "main.css": "/van-voyage/static/css/main.5c535a38.css",
+    "main.js": "/van-voyage/static/js/main.00688570.js",
+    "static/js/877.bfff12ce.chunk.js": "/van-voyage/static/js/877.bfff12ce.chunk.js",
+    "static/js/736.82db54e0.chunk.js": "/van-voyage/static/js/736.82db54e0.chunk.js",
     "index.html": "/van-voyage/index.html",
-    "main.7acaea2f.css.map": "/van-voyage/static/css/main.7acaea2f.css.map",
-    "main.07d3183d.js.map": "/van-voyage/static/js/main.07d3183d.js.map"
+    "main.5c535a38.css.map": "/van-voyage/static/css/main.5c535a38.css.map",
+    "main.00688570.js.map": "/van-voyage/static/js/main.00688570.js.map",
+    "877.bfff12ce.chunk.js.map": "/van-voyage/static/js/877.bfff12ce.chunk.js.map",
+    "736.82db54e0.chunk.js.map": "/van-voyage/static/js/736.82db54e0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7acaea2f.css",
-    "static/js/main.07d3183d.js"
+    "static/css/main.5c535a38.css",
+    "static/js/main.00688570.js"
   ]
 }

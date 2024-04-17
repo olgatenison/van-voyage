@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkvan_voyage=self.webpackChunkvan_voyage||[]).push([[877],{877:function(a,e,n){n.r(e);var t=n(184);e.default=function(){return(0,t.jsx)(t.Fragment,{children:"Catalog"})}}}]);
+//# sourceMappingURL=877.bfff12ce.chunk.js.map
