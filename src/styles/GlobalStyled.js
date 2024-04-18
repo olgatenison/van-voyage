@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import { theme } from './Theme';
 
 export const globalStyled = css`
   body {
@@ -9,6 +10,7 @@ export const globalStyled = css`
     width: 100%;
     height: 100vh;
     margin: 0;
+    background-color: ${theme.colors.white};
   }
   *,
   *::before,

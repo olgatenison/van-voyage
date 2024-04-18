@@ -1,11 +1,13 @@
 export const theme = {
   colors: {
-    white: '#F7F7F7',
+    white: '#ffffff',
     black: '#101828',
     gray: '#475467',
     red: '#E44848',
+    hoverred: '#D23E3E',
     yellow: '#FFC531',
-    lightgrey: '#F2F4F7',
+    transblack: '#a5a7ac',
+    lightgrey: '#F7F7F7',
   },
   breakpoint: {
     mobile: '320px',

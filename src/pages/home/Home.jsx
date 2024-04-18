@@ -1,5 +1,11 @@
+// import { Redbutton, Loadmore, Subtitle } from './HomeStyled';
+
 const Home = () => {
-  return <>home</>;
+  return (
+    <>
+      <div></div>
+    </>
+  );
 };
 
 export default Home;
