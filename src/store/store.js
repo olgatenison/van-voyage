@@ -1,10 +1,29 @@
-// https://6620ee7d3bf790e070b13fc7.mockapi.io/adverts
-
 import { configureStore } from '@reduxjs/toolkit';
-import { favoritesReducer } from './favorites/favorites.slice'; // Исправлено на favoritesReducer
+import storage from 'redux-persist/lib/storage';
+import { persistStore, persistReducer } from 'redux-persist';
+import { combineReducers } from 'redux';
+import { favoritesReducer } from './favorites/favorites.slice';
+
+const rootReducer = combineReducers({
+  favorites: favoritesReducer,
+});
+
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['favorites'],
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-  reducer: {
-    favorites: favoritesReducer, // Исправлено на favoritesReducer и добавлено имя для среза
-  },
+  reducer: persistedReducer,
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ['persist/PERSIST'],
+      },
+    }),
 });
+
+export const persistor = persistStore(store);

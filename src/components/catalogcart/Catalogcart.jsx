@@ -22,7 +22,12 @@ const CatalogCart = ({ van }) => {
   const favorites = useSelector(state => state.favorites);
   const dispatch = useDispatch();
 
-  console.log('favorites', favorites);
+  const isFavorite = favorites.some(item => item._id === van._id);
+
+  const handleToggleFavorites = () => {
+    dispatch(toggleFavorites(van));
+  };
+
   return (
     <>
       <CatalogCartWrapper>
@@ -34,9 +39,12 @@ const CatalogCart = ({ van }) => {
             <TitleCart>{van.name}</TitleCart>
             <FirstrowWrapper>
               <PriceCart>€{van.price}.00</PriceCart>
-              <Favotitebtn onClick={() => dispatch(toggleFavorites(van))}>
+              <Favotitebtn
+                onClick={handleToggleFavorites}
+                isFavorite={isFavorite}
+              >
                 <svg>
-                  <use href={`${svg}#icon-hart`}></use>
+                  <use href={`${svg}#icon-hart`} />
                 </svg>
               </Favotitebtn>
             </FirstrowWrapper>

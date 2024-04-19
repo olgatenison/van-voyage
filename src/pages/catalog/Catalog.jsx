@@ -10,6 +10,7 @@ import {
   Loadmore,
   Subtitle,
   Towninput,
+  CatalogSide,
 } from './CatalogStyled';
 import { fetchAllVans } from '../../store/api';
 
@@ -42,12 +43,14 @@ const Catalog = () => {
           <Vehicletype />
           <Redbutton>Search</Redbutton>
         </aside>
-        <CatalogListAll>
-          {vans.map(van => (
-            <CatalogCart key={van.id} van={van} />
-          ))}
+        <CatalogSide>
+          <CatalogListAll>
+            {vans.map(van => (
+              <CatalogCart key={van._id} van={van} />
+            ))}
+          </CatalogListAll>
           <Loadmore>Load more</Loadmore>
-        </CatalogListAll>
+        </CatalogSide>
       </CatalogSection>
     </>
   );

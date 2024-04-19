@@ -60,13 +60,11 @@ export const PriceCart = styled.h3`
   color: ${theme.colors.black};
   padding-top: 2px;
 `;
-
 export const Favotitebtn = styled.button`
   width: 24px;
   height: 24px;
   border: none;
   cursor: pointer;
-
   background-color: transparent;
   padding: 0;
   display: flex;
@@ -76,8 +74,8 @@ export const Favotitebtn = styled.button`
   svg {
     width: 24px;
     height: 24px;
-    stroke: ${theme.colors.black};
-    fill: transparent;
+    stroke: ${props => (props.isFavorite ? 'red' : theme.colors.black)};
+    fill: ${props => (props.isFavorite ? 'red' : 'transparent')};
     transition: all 0.3s ease;
   }
 `;

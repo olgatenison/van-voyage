@@ -10,7 +10,13 @@ export const CatalogSection = styled.div`
   padding: 0 64px;
   gap: 64px;
 `;
-export const CatalogListAll = styled.div`
+export const CatalogSide = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+`;
+export const CatalogListAll = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
