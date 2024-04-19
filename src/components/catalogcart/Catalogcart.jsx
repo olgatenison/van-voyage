@@ -1,4 +1,10 @@
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleFavorites } from '../../store/favorites/favorites.slice';
+
 import { Redbutton } from 'pages/catalog/CatalogStyled';
+import svg from '../../img/icons.svg';
+import Modal from 'components/modal/Modal';
 import {
   CatalogCartWrapper,
   ImgWrapper,
@@ -14,18 +20,24 @@ import {
   DescriptionCart,
   // CategoriesWrappwerCart,
 } from './CatalogcartStyled';
-import svg from '../../img/icons.svg';
-import { useDispatch, useSelector } from 'react-redux';
-import { toggleFavorites } from '../../store/favorites/favorites.slice';
 
 const CatalogCart = ({ van }) => {
   const favorites = useSelector(state => state.favorites);
   const dispatch = useDispatch();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const isFavorite = favorites.some(item => item._id === van._id);
+  const isFavorite = favorites.some(item => item.id === van.id);
 
   const handleToggleFavorites = () => {
     dispatch(toggleFavorites(van));
+  };
+
+  const handleShowModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -57,9 +69,17 @@ const CatalogCart = ({ van }) => {
           </Secondrow>
           <DescriptionCart>{van.description}</DescriptionCart>
           {/* <CategoriesWrappwerCart>{van.details}</CategoriesWrappwerCart> */}
-          <Redbutton>Show more</Redbutton>
+          <Redbutton onClick={handleShowModal}>Show more</Redbutton>
         </TextWrapper>
       </CatalogCartWrapper>
+
+      {isModalOpen && (
+        <Modal
+          isOpen={isModalOpen}
+          van={van}
+          onClose={handleCloseModal}
+        ></Modal>
+      )}
     </>
   );
 };

@@ -60,6 +60,7 @@ export const PriceCart = styled.h3`
   color: ${theme.colors.black};
   padding-top: 2px;
 `;
+
 export const Favotitebtn = styled.button`
   width: 24px;
   height: 24px;
