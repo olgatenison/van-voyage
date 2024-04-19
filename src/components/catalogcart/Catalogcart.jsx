@@ -15,8 +15,14 @@ import {
   // CategoriesWrappwerCart,
 } from './CatalogcartStyled';
 import svg from '../../img/icons.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleFavorites } from '../../store/favorites/favorites.slice';
 
 const CatalogCart = ({ van }) => {
+  const favorites = useSelector(state => state.favorites);
+  const dispatch = useDispatch();
+
+  console.log('favorites', favorites);
   return (
     <>
       <CatalogCartWrapper>
@@ -28,7 +34,7 @@ const CatalogCart = ({ van }) => {
             <TitleCart>{van.name}</TitleCart>
             <FirstrowWrapper>
               <PriceCart>€{van.price}.00</PriceCart>
-              <Favotitebtn>
+              <Favotitebtn onClick={() => dispatch(toggleFavorites(van))}>
                 <svg>
                   <use href={`${svg}#icon-hart`}></use>
                 </svg>

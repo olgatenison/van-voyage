@@ -8,14 +8,14 @@ export const favoritesSlice = createSlice({
   reducers: {
     toggleFavorites: (state, action) => {
       const van = action.payload;
-      // Проверяем, есть ли уже в избранном
-      const isExist = state.some(v => v.id === van.id);
-      if (isExist) {
-        // Если есть, убираем из избранного
-        return state.filter(v => v.id !== van.id);
+      const index = state.findIndex(v => v.id === van.id);
+
+      if (index !== -1) {
+        // Если уже в избранном, удаляем из списка
+        state.splice(index, 1);
       } else {
-        // Иначе, добавляем в избранное
-        return [...state, van];
+        // Иначе добавляем в список
+        state.push(van);
       }
     },
   },
