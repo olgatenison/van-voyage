@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 const BASE_URL = 'https://6620ee7d3bf790e070b13fc7.mockapi.io';
 
 export const fetchAllVans = async () => {

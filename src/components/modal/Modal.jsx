@@ -14,9 +14,14 @@ import {
   TabButton,
   ModalLeftContent,
   FeaturesContent,
+  VehicleDetails,
+  TitleVehicleDetails,
+  VehicleDetailsList,
   ReviewsContent,
   ModalRightContent,
-  FormWrapper,
+  RevieTitle,
+  Avatar,
+  RevieName,
 } from './ModalStyled';
 
 import {
@@ -27,6 +32,8 @@ import {
   PriceCart,
   ImgWrapper,
 } from '../catalogcart/CatalogcartStyled';
+import MyForm from 'components/form/MyForm';
+import RaitingStars from 'components/raitingstars/RaitingStars';
 import svg from '../../img/icons.svg';
 
 const Modal = ({ isOpen, onClose, van }) => {
@@ -118,14 +125,72 @@ const Modal = ({ isOpen, onClose, van }) => {
 
                 <ModalLeftContent>
                   {activeTab === 'Features' ? (
-                    <FeaturesContent />
+                    <FeaturesContent>
+                      <div></div>
+                      <VehicleDetails>
+                        <TitleVehicleDetails>
+                          Vehicle details
+                        </TitleVehicleDetails>
+                        <VehicleDetailsList>
+                          <li>
+                            <p>
+                              Form
+                              <span>{van.form}</span>
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              Length
+                              <span>{van.length}</span>
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              Width
+                              <span>{van.width}</span>
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              Height
+                              <span>{van.height}</span>
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              Tank
+                              <span>{van.tank}</span>
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              Consumption
+                              <span>{van.consumption}</span>
+                            </p>
+                          </li>
+                        </VehicleDetailsList>
+                      </VehicleDetails>
+                    </FeaturesContent>
                   ) : (
-                    <ReviewsContent />
+                    <ReviewsContent>
+                      {van.reviews.map((review, index) => (
+                        <div key={index}>
+                          <RevieTitle>
+                            <Avatar>{review.reviewer_name.charAt(0)}</Avatar>
+                            <div>
+                              <RevieName>{review.reviewer_name}</RevieName>
+                              <RaitingStars rating={review.reviewer_rating} />
+                            </div>
+                          </RevieTitle>
+                          <div>{review.comment}</div>
+                        </div>
+                      ))}
+                    </ReviewsContent>
                   )}
                 </ModalLeftContent>
 
                 <ModalRightContent>
-                  <FormWrapper></FormWrapper>
+                  <MyForm />
                 </ModalRightContent>
               </ModalTabsZone>
             </ModalMainContent>

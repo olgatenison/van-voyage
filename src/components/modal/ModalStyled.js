@@ -19,16 +19,18 @@ export const Blackdrop = styled.div`
 // white bg
 export const CatalogCartWrapperModal = styled.div`
   width: 982px;
-  margin: 0 auto;
+  margin: 30px auto 0;
   display: flex;
   flex-direction: column;
   padding: 40px;
+  padding-right: 30px;
   border-radius: 20px;
-  margin-top: 20px;
+
   gap: 34px;
   flex-shrink: 1;
   background-color: ${theme.colors.white};
 `;
+
 export const FirstrowModal = styled.div`
   display: flex;
   flex-direction: column;
@@ -48,7 +50,26 @@ export const ButtonClose = styled.button`
 `;
 
 // here is scroll part
-export const ModalMainContent = styled.div``;
+export const ModalMainContent = styled.div`
+  overflow-y: auto;
+  max-height: 600px;
+  padding-right: 10px;
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+    width: 2px;
+    margin: 0 auto;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb {
+    width: 3px;
+    height: 100px;
+    border-radius: 3px;
+    background-color: ${theme.colors.transblack};
+  }
+`;
 
 // info fron small cart
 export const InfoFromCard = styled.div``;
@@ -134,25 +155,96 @@ export const TabButton = styled.button`
 // left
 export const ModalLeftContent = styled.div`
   width: 50%;
-  height: 20px;
 `;
 export const FeaturesContent = styled.div`
-  background-color: red;
-  height: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+  padding-right: 24px;
 `;
+export const VehicleDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+export const TitleVehicleDetails = styled.h2`
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 24px;
+  color: ${theme.colors.black};
+  max-width: 430px;
+  position: relative;
+
+  :after {
+    position: absolute;
+    content: '';
+    bottom: -24px;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: ${theme.colors.transblack};
+  }
+`;
+export const VehicleDetailsList = styled.ul`
+  padding-top: 48px;
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  li {
+    padding-bottom: 14px;
+
+    p {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+`;
+
 export const ReviewsContent = styled.div`
-  background-color: green;
-  height: 20px;
+  padding-right: 24px;
+  padding-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 `;
 
 // right
 export const ModalRightContent = styled.div`
   flex-grow: 1;
   width: 50%;
+  height: 532px;
   margin-right: auto;
-  height: 20px;
-  background-color: teal;
+  border-radius: 10px;
+  border: 1px solid ${theme.colors.transblack};
+  padding: 24px;
+`;
+export const RevieTitle = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 16px;
 `;
 
-// form
-export const FormWrapper = styled.div``;
+export const Avatar = styled.div`
+  width: 60px;
+  height: 60px;
+  background-color: ${theme.colors.lightgrey};
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 24px;
+  color: ${theme.colors.red};
+`;
+export const RevieName = styled.p`
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  color: ${theme.colors.black};
+  padding-bottom: 4px;
+`;

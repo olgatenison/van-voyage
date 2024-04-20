@@ -49,7 +49,7 @@ export const FirstrowWrapper = styled.div`
 export const TitleCart = styled.h2`
   font-weight: 900;
   font-size: 24px;
-  line-height: 20px;
+  line-height: 24px;
   color: ${theme.colors.black};
 `;
 

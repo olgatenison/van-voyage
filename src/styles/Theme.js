@@ -6,7 +6,7 @@ export const theme = {
     red: '#E44848',
     hoverred: '#D23E3E',
     yellow: '#FFC531',
-    transblack: '#a5a7ac',
+    transblack: '#d1d2d5',
     lightgrey: '#F7F7F7',
   },
   breakpoint: {

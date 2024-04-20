@@ -6,7 +6,6 @@ export const globalStyled = css`
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-style: normal;
     width: 100%;
     height: 100vh;
     margin: 0;
