@@ -79,4 +79,80 @@ export const DescriptionCartModal = styled.p`
 `;
 
 //tabs down part
-export const ModalTabsZone = styled.div``;
+export const ModalTabsZone = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+export const TabWrapper = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  position: relative;
+  margin-bottom: 70px;
+  :after {
+    position: absolute;
+    content: '';
+    bottom: -24px;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: ${theme.colors.transblack};
+  }
+`;
+
+// tabs
+export const TabButton = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: ${theme.colors.black};
+  margin-right: 40px;
+  position: relative;
+
+  :after {
+    position: absolute;
+    content: '';
+    z-index: 45;
+    bottom: -26px;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 5px;
+    background-color: ${theme.colors.red};
+    opacity: ${props => (props.active ? '1' : '0')};
+    transition: opacity 0.3s ease;
+  }
+`;
+
+// left
+export const ModalLeftContent = styled.div`
+  width: 50%;
+  height: 20px;
+`;
+export const FeaturesContent = styled.div`
+  background-color: red;
+  height: 20px;
+`;
+export const ReviewsContent = styled.div`
+  background-color: green;
+  height: 20px;
+`;
+
+// right
+export const ModalRightContent = styled.div`
+  flex-grow: 1;
+  width: 50%;
+  margin-right: auto;
+  height: 20px;
+  background-color: teal;
+`;
+
+// form
+export const FormWrapper = styled.div``;

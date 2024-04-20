@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Blackdrop,
   CatalogCartWrapperModal,
@@ -10,6 +10,13 @@ import {
   ModalMainContent,
   InfoFromCard,
   ModalTabsZone,
+  TabWrapper,
+  TabButton,
+  ModalLeftContent,
+  FeaturesContent,
+  ReviewsContent,
+  ModalRightContent,
+  FormWrapper,
 } from './ModalStyled';
 
 import {
@@ -23,7 +30,7 @@ import {
 import svg from '../../img/icons.svg';
 
 const Modal = ({ isOpen, onClose, van }) => {
-  // functions for openin and close Modal
+  // functions for openig and close Modal
   useEffect(() => {
     const handleKeyDown = event => {
       if (event.key === 'Escape') {
@@ -46,6 +53,12 @@ const Modal = ({ isOpen, onClose, van }) => {
     if (event.target === event.currentTarget) {
       onClose();
     }
+  };
+
+  // functions for tabing Modal
+  const [activeTab, setActiveTab] = useState('Features');
+  const handleTabChange = tabName => {
+    setActiveTab(tabName);
   };
 
   return (
@@ -87,7 +100,34 @@ const Modal = ({ isOpen, onClose, van }) => {
                 <DescriptionCartModal>{van.description}</DescriptionCartModal>
               </InfoFromCard>
 
-              <ModalTabsZone></ModalTabsZone>
+              <ModalTabsZone>
+                <TabWrapper>
+                  <TabButton
+                    onClick={() => handleTabChange('Features')}
+                    active={activeTab === 'Features'}
+                  >
+                    Features
+                  </TabButton>
+                  <TabButton
+                    onClick={() => handleTabChange('Reviews')}
+                    active={activeTab === 'Reviews'}
+                  >
+                    Reviews
+                  </TabButton>
+                </TabWrapper>
+
+                <ModalLeftContent>
+                  {activeTab === 'Features' ? (
+                    <FeaturesContent />
+                  ) : (
+                    <ReviewsContent />
+                  )}
+                </ModalLeftContent>
+
+                <ModalRightContent>
+                  <FormWrapper></FormWrapper>
+                </ModalRightContent>
+              </ModalTabsZone>
             </ModalMainContent>
           </CatalogCartWrapperModal>
         </Blackdrop>

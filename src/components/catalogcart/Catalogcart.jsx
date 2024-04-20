@@ -26,7 +26,7 @@ const CatalogCart = ({ van }) => {
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const isFavorite = favorites.some(item => item.id === van.id);
+  const isFavorite = favorites.some(item => item._id === van._id);
 
   const handleToggleFavorites = () => {
     dispatch(toggleFavorites(van));
