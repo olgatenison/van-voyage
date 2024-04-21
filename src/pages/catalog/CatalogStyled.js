@@ -7,6 +7,7 @@ export const CatalogSection = styled.div`
   width: 1440px;
   margin: 0 auto;
   display: flex;
+  justify-content: space-between;
   padding: 0 64px;
 `;
 export const CatalogSide = styled.div`

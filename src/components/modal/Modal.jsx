@@ -35,6 +35,7 @@ import {
 import MyForm from 'components/form/MyForm';
 import RaitingStars from 'components/raitingstars/RaitingStars';
 import svg from '../../img/icons.svg';
+import AdvantagesList from 'components/advantageslist/AdvantagesList';
 
 const Modal = ({ isOpen, onClose, van }) => {
   // functions for openig and close Modal
@@ -126,7 +127,7 @@ const Modal = ({ isOpen, onClose, van }) => {
                 <ModalLeftContent>
                   {activeTab === 'Features' ? (
                     <FeaturesContent>
-                      <div></div>
+                      <AdvantagesList van={van} />
                       <VehicleDetails>
                         <TitleVehicleDetails>
                           Vehicle details

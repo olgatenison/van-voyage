@@ -20,6 +20,7 @@ import {
   DescriptionCart,
   // CategoriesWrappwerCart,
 } from './CatalogcartStyled';
+import AdvantagesList from 'components/advantageslist/AdvantagesList';
 
 const CatalogCart = ({ van }) => {
   const favorites = useSelector(state => state.favorites);
@@ -68,7 +69,7 @@ const CatalogCart = ({ van }) => {
             <PlaceCart>{van.location}</PlaceCart>
           </Secondrow>
           <DescriptionCart>{van.description}</DescriptionCart>
-          {/* <CategoriesWrappwerCart>{van.details}</CategoriesWrappwerCart> */}
+          <AdvantagesList van={van} />
           <Redbutton onClick={handleShowModal}>Show more</Redbutton>
         </TextWrapper>
       </CatalogCartWrapper>
