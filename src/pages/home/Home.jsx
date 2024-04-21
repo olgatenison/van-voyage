@@ -1,5 +1,5 @@
 import { Hero, Logo, RedbuttonHome } from './HomeStyled';
-
+import Footer from 'components/footer/Footer';
 const Home = () => {
   return (
     <>
@@ -14,6 +14,7 @@ const Home = () => {
           <RedbuttonHome to="/catalog">Start your journey!</RedbuttonHome>
         </div>
       </Hero>
+      <Footer />
     </>
   );
 };

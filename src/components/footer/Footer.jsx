@@ -2,6 +2,7 @@ import svg from '../../img/icons.svg';
 import styled from '@emotion/styled';
 import { theme } from 'styles/Theme';
 import { Link } from 'react-router-dom';
+import Car from 'components/car/Car';
 
 const Footer = () => {
   return (
@@ -13,29 +14,16 @@ const Footer = () => {
           </svg>
           Developed by Olga Tenison
         </Link>
-        {/* <Car>
-          <svg>
-            <use href={`${svg}#icon-van3`}></use>
-          </svg>
-        </Car> */}
       </Signature>
+      <Car />
     </>
   );
 };
 
 export default Footer;
 
-export const Car = styled.div`
-  svg {
-    display: block;
-    width: 40px;
-    height: 28px;
-    fill: ${theme.colors.black};
-    margin-right: 0;
-  }
-`;
-
 export const Signature = styled.div`
+  margin-bottom: 20px;
   padding-top: 50px;
 
   display: flex;
@@ -50,7 +38,7 @@ export const Signature = styled.div`
   &:after {
     position: absolute;
     content: '';
-    bottom: -70px;
+    bottom: -48px;
     left: 0;
     display: block;
     width: 100%;
