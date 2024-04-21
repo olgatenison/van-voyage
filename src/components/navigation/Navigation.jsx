@@ -1,7 +1,9 @@
+import React from 'react';
+
 import {
   NavStyled,
-  NavLinkStyled,
   NavLinksWrapper,
+  NavLinkStyled,
   HeaderSvg,
 } from './NavigationStyled';
 import svg from '../../img/icons.svg';
@@ -11,13 +13,13 @@ const Navigation = () => {
     <>
       <NavStyled>
         <NavLinksWrapper>
-          <NavLinkStyled exact to="/" activeClassName="activeLink">
+          <NavLinkStyled exact to="/" activeClassName="active">
             Home
           </NavLinkStyled>
-          <NavLinkStyled to="/catalog" activeClassName="activeLink">
+          <NavLinkStyled to="/catalog" activeClassName="active">
             Catalog
           </NavLinkStyled>
-          <NavLinkStyled to="/favorite" activeClassName="activeLink">
+          <NavLinkStyled to="/favorite" activeClassName="active">
             Favorite
           </NavLinkStyled>
         </NavLinksWrapper>
@@ -28,4 +30,5 @@ const Navigation = () => {
     </>
   );
 };
+
 export default Navigation;

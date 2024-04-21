@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import { NavLink } from 'react-router-dom';
 import { theme } from 'styles/Theme';
+import { NavLink } from 'react-router-dom';
 
 export const NavStyled = styled.div`
   display: flex;
@@ -26,14 +26,6 @@ export const NavStyled = styled.div`
     background-color: ${theme.colors.transblack};
   }
 `;
-
-export const NavLinksWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 30px;
-`;
-
 export const NavLinkStyled = styled(NavLink)`
   font-weight: 600;
   font-size: 20px;
@@ -43,7 +35,7 @@ export const NavLinkStyled = styled(NavLink)`
   display: block;
   position: relative;
 
-  &:after {
+  &.active:after {
     content: '';
     z-index: 45;
     bottom: -20px;
@@ -52,10 +44,16 @@ export const NavLinkStyled = styled(NavLink)`
     width: 100%;
     height: 5px;
     background-color: ${theme.colors.red};
-    opacity: ${props => (props.active ? '1' : '0')};
+    opacity: 1;
     transition: opacity 0.3s ease;
     position: absolute;
   }
+`;
+export const NavLinksWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
 `;
 
 export const HeaderSvg = styled.svg`
