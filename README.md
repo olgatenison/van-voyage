@@ -1,5 +1,9 @@
 # Ukrainian Camper Rental Service - Van Voyage
 
+<p align="center">
+  <img src="https://github.com/olgatenison/van-voyage/blob/main/src/img/pre1.jpg" width="800" alt="Превью изображение">
+</p>
+
 This project is a web application for renting campers in Ukraine, created as part of a test task. 
 In the service, you can explore various services related to camper rental for family trips.
 Currently, the application is available according to the layout on desktop screens of 1440px and above.
@@ -33,10 +37,15 @@ The project includes the following additional tasks:
 
 ## Deployment
 
-The project has been deployed on GitHub Pages and is available at [this link](olgatenison.github.io/van-voyage/).
+The project has been deployed on GitHub Pages.
 
+<p align="center">
+  <img src="https://github.com/olgatenison/van-voyage/blob/main/src/img/prew2.jpg" width="800" alt="Превью изображение">
+</p>
 
-
+<p align="center">
+  <img src="https://github.com/olgatenison/van-voyage/blob/main/src/img/prew3.jpg" width="800" alt="Превью изображение">
+</p>
 
 # Український кампер-сервіс Van Voyage
 
@@ -73,4 +82,4 @@ The project has been deployed on GitHub Pages and is available at [this link](ol
 
 ## Деплой
 
-Проєкт був задеплоєний на GitHub Pages та доступний за [цим посиланням](olgatenison.github.io/van-voyage/).
+Проєкт був задеплоєний на GitHub Pages.
