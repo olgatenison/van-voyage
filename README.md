@@ -39,6 +39,9 @@ The project includes the following additional tasks:
 
 The project has been deployed on GitHub Pages and is available at [this link](olgatenison.github.io/van-voyage/).
 
+<p align="center">
+  <img src="https://github.com/olgatenison/van-voyage/blob/main/src/img/prew2.jpg" width="800" alt="Превью изображение">
+</p>
 
 
 
@@ -74,7 +77,9 @@ The project has been deployed on GitHub Pages and is available at [this link](ol
 - Використання Redux для керування станом додатку.
 - Використання Axios для взаємодії з API.
 - Додаткові функції відповідно до технічного завдання, такі як пагінація, додавання оголошень до улюблених тощо.
-
+<p align="center">
+  <img src="https://github.com/olgatenison/van-voyage/blob/main/src/img/prew3.jpg" width="800" alt="Превью изображение">
+</p>
 ## Деплой
 
 Проєкт був задеплоєний на GitHub Pages та доступний за [цим посиланням](olgatenison.github.io/van-voyage/).
