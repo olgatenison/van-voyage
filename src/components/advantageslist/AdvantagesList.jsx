@@ -34,7 +34,7 @@ const AdvantagesList = ({ van }) => {
           value: transmission,
           svgpath: `${svg}#icon-conect`,
         },
-        { label: '', value: engine, svgpath: `${svg}#icon-gasstation` },
+        { label: 'engine', value: engine, svgpath: `${svg}#icon-gasstation` },
         { label: 'TV', value: tv, svgpath: `${svg}#icon-tv` },
         { label: 'AC', value: airConditioner, svgpath: `${svg}#icon-wind` },
         { label: 'Kitchen', value: kitchen, svgpath: `${svg}#icon-fork` },
@@ -45,13 +45,13 @@ const AdvantagesList = ({ van }) => {
         { label: 'Toilet', value: toilet, svgpath: `${svg}#icon-toilet` },
         { label: 'Shower', value: shower, svgpath: `${svg}#icon-shower` },
         { label: 'Freezer', value: freezer, svgpath: `${svg}#icon-freezer` },
-        { label: '', value: gas, svgpath: `${svg}#icon-gas` },
         { label: '', value: water, svgpath: `${svg}#icon-water` },
         {
           label: 'Microwave',
           value: microwave,
           svgpath: `${svg}#icon-microwave`,
         },
+        { label: '', value: gas, svgpath: `${svg}#icon-gas` },
       ].map(
         ({ label, value, svgpath }) =>
           value !== 0 &&

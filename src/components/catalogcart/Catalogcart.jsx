@@ -18,7 +18,7 @@ import {
   RatetxtCart,
   PlaceCart,
   DescriptionCart,
-  // CategoriesWrappwerCart,
+  AdvantagesListSmall,
 } from './CatalogcartStyled';
 import AdvantagesList from 'components/advantageslist/AdvantagesList';
 
@@ -69,7 +69,9 @@ const CatalogCart = ({ van }) => {
             <PlaceCart>{van.location}</PlaceCart>
           </Secondrow>
           <DescriptionCart>{van.description}</DescriptionCart>
-          <AdvantagesList van={van} />
+          <AdvantagesListSmall>
+            <AdvantagesList van={van} />
+          </AdvantagesListSmall>
           <Redbutton onClick={handleShowModal}>Show more</Redbutton>
         </TextWrapper>
       </CatalogCartWrapper>

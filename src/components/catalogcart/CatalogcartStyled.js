@@ -136,6 +136,7 @@ export const DescriptionCart = styled.p`
   text-overflow: ellipsis;
 `;
 
-export const CategoriesWrappwerCart = styled.div`
-  display: flex;
+export const AdvantagesListSmall = styled.div`
+  max-height: 100px;
+  overflow: hidden;
 `;
