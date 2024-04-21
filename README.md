@@ -1,5 +1,9 @@
 # Ukrainian Camper Rental Service - Van Voyage
 
+<p align="center">
+  <img src="https://github.com/olgatenison/van-voyage/blob/main/src/img/pre1.jpg" width="800" alt="Превью изображение">
+</p>
+
 This project is a web application for renting campers in Ukraine, created as part of a test task. 
 In the service, you can explore various services related to camper rental for family trips.
 Currently, the application is available according to the layout on desktop screens of 1440px and above.
