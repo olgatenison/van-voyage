@@ -24,7 +24,7 @@ export default Footer;
 
 export const Signature = styled.div`
   margin-bottom: 20px;
-  padding-top: 50px;
+  padding-top: 20px;
 
   display: flex;
   justify-content: center;
@@ -38,7 +38,7 @@ export const Signature = styled.div`
   &:after {
     position: absolute;
     content: '';
-    bottom: -48px;
+    bottom: -38px;
     left: 0;
     display: block;
     width: 100%;

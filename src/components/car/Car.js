@@ -23,7 +23,7 @@ export default Car;
 export const CarWrapper = styled.div`
   width: 1440px;
   margin: 0 auto;
-  padding-top: 20px;
+  padding-top: 10px;
 
   svg {
     display: block;
