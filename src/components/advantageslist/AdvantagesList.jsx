@@ -24,7 +24,6 @@ const AdvantagesList = ({ van }) => {
     } = {},
   } = van;
 
-  console.log(van.details);
   return (
     <AdvantagesListWrapper>
       {[
