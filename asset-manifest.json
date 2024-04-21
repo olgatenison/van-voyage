@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/van-voyage/static/css/main.5c535a38.css",
-    "main.js": "/van-voyage/static/js/main.a1a6b927.js",
+    "main.js": "/van-voyage/static/js/main.f2e46d43.js",
     "static/media/van1.jpg": "/van-voyage/static/media/van1.bb95693d6148d264ab17.jpg",
     "static/media/icons.svg": "/van-voyage/static/media/icons.11fd7868c6c72a674e711d4f1ba2f391.svg",
     "index.html": "/van-voyage/index.html",
@@ -9,10 +9,10 @@
     "static/media/map-pin.svg": "/van-voyage/static/media/map-pin.c37c7145a29e190ae5173db1cb45eae9.svg",
     "static/media/star-y.svg": "/van-voyage/static/media/star-y.84729e1dacc2a7bbb03d20c342858aa0.svg",
     "main.5c535a38.css.map": "/van-voyage/static/css/main.5c535a38.css.map",
-    "main.a1a6b927.js.map": "/van-voyage/static/js/main.a1a6b927.js.map"
+    "main.f2e46d43.js.map": "/van-voyage/static/js/main.f2e46d43.js.map"
   },
   "entrypoints": [
     "static/css/main.5c535a38.css",
-    "static/js/main.a1a6b927.js"
+    "static/js/main.f2e46d43.js"
   ]
 }
