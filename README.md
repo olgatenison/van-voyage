@@ -37,7 +37,7 @@ The project includes the following additional tasks:
 
 ## Deployment
 
-The project has been deployed on GitHub Pages and is available at [this link](olgatenison.github.io/van-voyage/).
+The project has been deployed on GitHub Pages.
 
 <p align="center">
   <img src="https://github.com/olgatenison/van-voyage/blob/main/src/img/prew2.jpg" width="800" alt="Превью изображение">
@@ -82,4 +82,4 @@ The project has been deployed on GitHub Pages and is available at [this link](ol
 
 ## Деплой
 
-Проєкт був задеплоєний на GitHub Pages та доступний за [цим посиланням](olgatenison.github.io/van-voyage/).
+Проєкт був задеплоєний на GitHub Pages.
