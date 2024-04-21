@@ -1,9 +1,10 @@
 // import { Redbutton, Loadmore, Subtitle } from './HomeStyled';
+import { Hero } from './HomeStyled';
 
 const Home = () => {
   return (
     <>
-      <div></div>
+      <Hero></Hero>
     </>
   );
 };

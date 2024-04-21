@@ -4,11 +4,10 @@ import pin from '../../img/map-pin.svg';
 import pin_a from '../../img/map-pin-p.svg';
 
 export const CatalogSection = styled.div`
-  max-width: 1440px;
+  width: 1440px;
   margin: 0 auto;
   display: flex;
   padding: 0 64px;
-  gap: 64px;
 `;
 export const CatalogSide = styled.div`
   display: flex;
@@ -21,6 +20,7 @@ export const CatalogListAll = styled.ul`
   flex-direction: column;
   align-items: center;
   gap: 32px;
+  padding-bottom: 30px;
 `;
 
 export const Subtitle = styled.h5`
@@ -52,8 +52,7 @@ export const Redbutton = styled.button`
 `;
 
 export const Loadmore = styled.button`
-  margin-top: 18px;
-  margin-bottom: 50px;
+  margin-bottom: 80px;
   display: block;
   width: 145px;
   height: 56px;
