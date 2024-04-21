@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
-
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Equipment from 'components/equipment/Equipment';
 import Vehicletype from 'components/vehicletype/Vehicletype';
 import CatalogCart from 'components/catalogcart/Catalogcart';
@@ -12,21 +13,18 @@ import {
   Towninput,
   CatalogSide,
 } from './CatalogStyled';
-import { fetchAllVans } from '../../store/api';
+import { fetchVans } from '../../store/creator';
 
 const Catalog = () => {
-  const [vans, setVans] = useState([]);
+  const dispatch = useDispatch();
+  const {
+    vans,
+    // loading, error
+  } = useSelector(state => state.vans);
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetchAllVans();
-        setVans(data);
-      } catch (error) {
-        console.error('Failed to fetch vans:', error);
-      }
-    };
-    fetchData();
-  }, []);
+    dispatch(fetchVans());
+  }, [dispatch]);
 
   return (
     <>

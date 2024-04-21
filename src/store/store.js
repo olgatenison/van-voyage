@@ -3,11 +3,12 @@ import storage from 'redux-persist/lib/storage';
 import { persistStore, persistReducer } from 'redux-persist';
 import { combineReducers } from 'redux';
 import { favoritesReducer } from './favorites/favorites.slice';
+import { vansSlice } from './creator.slice';
 
 const rootReducer = combineReducers({
   favorites: favoritesReducer,
+  vans: vansSlice.reducer,
 });
-
 const persistConfig = {
   key: 'root',
   storage,
