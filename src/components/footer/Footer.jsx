@@ -24,12 +24,12 @@ export default Footer;
 
 export const Signature = styled.div`
   margin-bottom: 20px;
-  padding-top: 20px;
+  padding-top: 230px;
 
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 1440px;
+  max-width: 1440px;
   margin: 0 auto;
   opacity: 1;
   transition: all 0.3s ease;
@@ -46,9 +46,8 @@ export const Signature = styled.div`
     background-color: ${theme.colors.transblack};
   }
   a {
-    padding-top: 10px;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 20px;
     text-align: center;
     color: ${theme.colors.black};
@@ -63,13 +62,22 @@ export const Signature = styled.div`
     margin-right: 10px;
     transition: all 0.3s ease;
   }
-  :hover,
-  :focus,
-  :active {
-    svg {
-      fill: ${theme.colors.red};
-      background-color: transparent;
-      stroke: ${theme.colors.red};
+
+  @media screen and (min-width: 500px) {
+    padding-top: 30px;
+    a {
+      font-size: 20px;
+      padding-top: 8px;
+    }
+
+    :hover,
+    :focus,
+    :active {
+      svg {
+        fill: ${theme.colors.red};
+        background-color: transparent;
+        stroke: ${theme.colors.red};
+      }
     }
   }
 `;

@@ -21,15 +21,25 @@ const Car = () => {
 export default Car;
 
 export const CarWrapper = styled.div`
-  width: 1440px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding-top: 10px;
+  padding-top: 19px;
 
   svg {
     display: block;
-    width: 40px;
-    height: 28px;
+    width: 30px;
+    height: 18px;
     fill: ${theme.colors.black};
     margin-right: 0;
+  }
+  @media screen and (min-width: 500px) {
+    padding-top: 10px;
+    svg {
+      display: block;
+      width: 40px;
+      height: 28px;
+      fill: ${theme.colors.black};
+      margin-right: 0;
+    }
   }
 `;

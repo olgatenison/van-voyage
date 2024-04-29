@@ -5,15 +5,18 @@ import { NavLink } from 'react-router-dom';
 export const NavStyled = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 30px;
   height: 60px;
   width: 1440px;
   margin: 0 auto;
   margin-bottom: 40px;
-  padding-left: 70px;
-  padding-right: 70px;
+
   position: relative;
+
+  padding-left: 20px;
+  padding-right: 20px;
+  gap: 10px;
 
   &:after {
     position: absolute;
@@ -25,13 +28,24 @@ export const NavStyled = styled.div`
     height: 1px;
     background-color: ${theme.colors.transblack};
   }
+  @media screen and (min-width: 500px) {
+    padding-left: 40px;
+    padding-right: 40px;
+    gap: 20px;
+    justify-content: space-between;
+  }
+  @media screen and (min-width: 836px) {
+    padding-left: 70px;
+    padding-right: 70px;
+    gap: 20px;
+  }
 `;
 export const NavLinkStyled = styled(NavLink)`
   font-weight: 600;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 24px;
   color: ${theme.colors.black};
-  max-width: 360px;
+
   display: block;
   position: relative;
 
@@ -48,6 +62,11 @@ export const NavLinkStyled = styled(NavLink)`
     transition: opacity 0.3s ease;
     position: absolute;
   }
+
+  @media screen and (min-width: 500px) {
+    font-size: 20px;
+    max-width: 360px;
+  }
 `;
 export const NavLinksWrapper = styled.div`
   display: flex;
@@ -55,11 +74,14 @@ export const NavLinksWrapper = styled.div`
   justify-content: space-between;
   gap: 30px;
 `;
-
 export const HeaderSvg = styled.svg`
-  display: block;
-  width: 40px;
-  height: 28px;
-  fill: ${theme.colors.black};
-  margin-right: 0;
+  display: none;
+
+  @media screen and (min-width: 500px) {
+    display: block;
+    width: 40px;
+    height: 28px;
+    fill: ${theme.colors.black};
+    margin-right: 0;
+  }
 `;
