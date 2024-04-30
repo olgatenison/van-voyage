@@ -57,6 +57,8 @@ export const Hero = styled.div`
     padding-right: 64px;
     border-radius: 20px;
     margin: 0 auto;
+    margin-left: 20px;
+    margin-right: 20px;
     max-width: 1380px;
 
     div {
@@ -72,9 +74,11 @@ export const Hero = styled.div`
       font-size: 18px;
     }
   }
+
   @media screen and (min-width: 1440px) {
     padding-left: 364px;
     padding-right: 64px;
+    margin: 0 auto;
   }
 `;
 

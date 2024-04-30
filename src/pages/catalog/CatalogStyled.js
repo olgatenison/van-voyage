@@ -4,7 +4,7 @@ import pin from '../../img/map-pin.svg';
 import pin_a from '../../img/map-pin-p.svg';
 
 export const CatalogSection = styled.div`
-  width: 1440px;
+  max-width: 1440px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -34,7 +34,7 @@ export const Subtitle = styled.h5`
 
 export const Redbutton = styled.button`
   display: block;
-  width: 173px;
+  width: 290px;
   height: 56px;
   border-radius: 28px;
   text-decoration: none;
@@ -49,6 +49,9 @@ export const Redbutton = styled.button`
   :active,
   :focus {
     background-color: ${theme.colors.hoverred};
+  }
+  @media screen and (min-width: 500px) {
+    width: 173px;
   }
 `;
 

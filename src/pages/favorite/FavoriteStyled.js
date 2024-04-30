@@ -6,16 +6,25 @@ export const FavoriteWrapper = styled.div`
   width: 1440px;
   margin: 0 auto;
   display: flex;
-  padding: 0 64px;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  padding: 0 20px;
   gap: 64px;
+  @media screen and (min-width: 500px) {
+  }
+  @media screen and (min-width: 837px) {
+    flex-direction: row;
+    padding: 0 64px;
+  }
 `;
 
 export const TitleFavorite = styled.h2`
   font-weight: 900;
-  font-size: 24px;
+  font-size: 18px;
   line-height: 34px;
   color: ${theme.colors.black};
-  width: 360px;
+  width: 100vw;
   position: relative;
 
   :after {
@@ -27,6 +36,11 @@ export const TitleFavorite = styled.h2`
     width: 100%;
     height: 1px;
     background-color: ${theme.colors.transblack};
+  }
+
+  @media screen and (min-width: 500px) {
+    max-width: 360px;
+    font-size: 24px;
   }
 `;
 

@@ -4,14 +4,27 @@ import pin_a from '../../img/map-pin.svg';
 import star from '../../img/star-y.svg';
 
 export const CatalogCartWrapper = styled.div`
-  width: 888px;
+  max-width: 338px;
   margin: 0 auto;
   display: flex;
+  flex-direction: column;
   padding: 24px;
   border-radius: 20px;
   border: solid 1px ${theme.colors.transblack};
   gap: 24px;
   flex-shrink: 1;
+
+  @media screen and (min-width: 500px) {
+    max-width: 888px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    padding: 24px;
+    border-radius: 20px;
+    border: solid 1px ${theme.colors.transblack};
+    gap: 24px;
+    flex-shrink: 1;
+  }
 `;
 
 export const ImgWrapper = styled.div`
@@ -37,13 +50,22 @@ export const TextWrapper = styled.div`
 
 export const Firstrow = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+  @media screen and (min-width: 837px) {
+    flex-direction: row;
+  }
 `;
 
 export const FirstrowWrapper = styled.div`
   display: flex;
+  justify-content: space-between;
   gap: 10px;
+  @media screen and (min-width: 500px) {
+    justify-content: start;
+  }
 `;
 
 export const TitleCart = styled.h2`
@@ -83,10 +105,16 @@ export const Favotitebtn = styled.button`
 
 export const Secondrow = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: start;
   gap: 16px;
+  margin-bottom: 20px;
+
+  @media screen and (min-width: 837px) {
+    flex-direction: row;
+    align-items: center;
+  }
 `;
 
 export const RatetxtCart = styled.p`
@@ -134,9 +162,11 @@ export const DescriptionCart = styled.p`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin-bottom: 20px;
 `;
 
 export const AdvantagesListSmall = styled.div`
   max-height: 100px;
   overflow: hidden;
+  margin-bottom: 20px;
 `;
