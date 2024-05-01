@@ -3,15 +3,19 @@ import { theme } from 'styles/Theme';
 import { Link } from 'react-router-dom';
 
 export const FavoriteWrapper = styled.div`
-  width: 1440px;
+  max-width: 1440px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: center;
   align-items: start;
-  padding: 0 20px;
   gap: 64px;
+  div {
+    margin: 0 auto;
+  }
   @media screen and (min-width: 500px) {
+    padding: 0 20px;
+    justify-content: start;
   }
   @media screen and (min-width: 837px) {
     flex-direction: row;
@@ -26,6 +30,7 @@ export const TitleFavorite = styled.h2`
   color: ${theme.colors.black};
   width: 100vw;
   position: relative;
+  padding-left: 20px;
 
   :after {
     position: absolute;
@@ -39,6 +44,7 @@ export const TitleFavorite = styled.h2`
   }
 
   @media screen and (min-width: 500px) {
+    padding-left: 0;
     max-width: 360px;
     font-size: 24px;
   }

@@ -47,7 +47,8 @@ export const Signature = styled.div`
   }
   a {
     font-weight: 600;
-    font-size: 18px;
+    font-size: 14px;
+
     line-height: 20px;
     text-align: center;
     color: ${theme.colors.black};

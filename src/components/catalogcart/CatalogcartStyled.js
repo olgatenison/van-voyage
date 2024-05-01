@@ -44,8 +44,12 @@ export const ImgWrapper = styled.div`
 export const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  max-width: 526px;
+
+  gap: 20px;
+  max-width: 300px;
+  @media screen and (min-width: 500px) {
+    max-width: 526px;
+  }
 `;
 
 export const Firstrow = styled.div`
@@ -53,7 +57,7 @@ export const Firstrow = styled.div`
   flex-direction: column;
   justify-content: space-between;
   gap: 20px;
-  margin-bottom: 20px;
+
   @media screen and (min-width: 837px) {
     flex-direction: row;
   }
@@ -61,8 +65,10 @@ export const Firstrow = styled.div`
 
 export const FirstrowWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+
   gap: 10px;
+
   @media screen and (min-width: 500px) {
     justify-content: start;
   }
@@ -73,6 +79,7 @@ export const TitleCart = styled.h2`
   font-size: 24px;
   line-height: 24px;
   color: ${theme.colors.black};
+  text-align: center;
 `;
 
 export const PriceCart = styled.h3`
@@ -81,6 +88,7 @@ export const PriceCart = styled.h3`
   line-height: 20px;
   color: ${theme.colors.black};
   padding-top: 2px;
+  padding-bottom: 20px;
 `;
 
 export const Favotitebtn = styled.button`
@@ -105,11 +113,11 @@ export const Favotitebtn = styled.button`
 
 export const Secondrow = styled.div`
   display: flex;
+  width: 100%;
   flex-direction: column;
   justify-content: flex-start;
   align-items: start;
   gap: 16px;
-  margin-bottom: 20px;
 
   @media screen and (min-width: 837px) {
     flex-direction: row;
@@ -168,5 +176,7 @@ export const DescriptionCart = styled.p`
 export const AdvantagesListSmall = styled.div`
   max-height: 100px;
   overflow: hidden;
-  margin-bottom: 20px;
+  & Redbutton {
+    margin-top: 40px;
+  }
 `;

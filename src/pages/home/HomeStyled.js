@@ -26,7 +26,7 @@ export const Hero = styled.div`
 
   p {
     padding-top: 270px;
-    padding-bottom: 20px;
+    padding-bottom: 30px;
     font-size: 14px;
     color: ${theme.colors.black};
   }

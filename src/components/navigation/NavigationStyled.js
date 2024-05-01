@@ -10,7 +10,7 @@ export const NavStyled = styled.div`
   height: 60px;
   width: 1440px;
   margin: 0 auto;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 
   position: relative;
 
@@ -33,6 +33,7 @@ export const NavStyled = styled.div`
     padding-right: 40px;
     gap: 20px;
     justify-content: space-between;
+    margin-bottom: 40px;
   }
   @media screen and (min-width: 836px) {
     padding-left: 70px;
