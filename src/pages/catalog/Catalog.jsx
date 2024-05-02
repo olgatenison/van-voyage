@@ -37,12 +37,16 @@ const Catalog = () => {
     <>
       <CatalogSection>
         <aside>
-          <Subtitle>Location</Subtitle>
-          <Towninput type="text" placeholder="City" />
-          <Subtitle>Filters</Subtitle>
-          <Equipment />
-          <Vehicletype />
-          <Redbutton>Search</Redbutton>
+          <div>
+            <Subtitle>Location</Subtitle>
+            <Towninput type="text" placeholder="City" />
+          </div>
+          <div>
+            <Subtitle>Filters</Subtitle>
+            <Equipment />
+            <Vehicletype />
+            <Redbutton>Search</Redbutton>
+          </div>
         </aside>
         <CatalogSide>
           <CatalogListAll>

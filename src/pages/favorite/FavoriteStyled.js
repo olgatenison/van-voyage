@@ -8,7 +8,7 @@ export const FavoriteWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: start;
+  align-items: center;
   gap: 64px;
   div {
     margin: 0 auto;
@@ -17,9 +17,10 @@ export const FavoriteWrapper = styled.div`
     padding: 0 20px;
     justify-content: start;
   }
-  @media screen and (min-width: 837px) {
+  @media screen and (min-width: 1280px) {
     flex-direction: row;
     padding: 0 64px;
+    align-items: start;
   }
 `;
 
@@ -30,7 +31,7 @@ export const TitleFavorite = styled.h2`
   color: ${theme.colors.black};
   width: 100vw;
   position: relative;
-  padding-left: 20px;
+  padding-left: 30px;
 
   :after {
     position: absolute;

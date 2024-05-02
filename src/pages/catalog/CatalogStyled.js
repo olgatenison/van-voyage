@@ -4,22 +4,67 @@ import pin from '../../img/map-pin.svg';
 import pin_a from '../../img/map-pin-p.svg';
 
 export const CatalogSection = styled.div`
-  max-width: 1440px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 64px;
+  aside {
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media screen and (min-width: 836px) {
+    max-width: 836px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 0 24px;
+
+    aside {
+      display: flex;
+      flex-direction: row;
+      gap: 40px;
+      justify-content: space-between;
+      align-items: start;
+    }
+  }
+
+  @media screen and (min-width: 1080px) {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 0 30px;
+
+    aside {
+      flex-direction: column;
+      gap: 20px;
+      justify-content: start;
+      align-items: start;
+      max-width: 280px;
+    }
+  }
+
+  @media screen and (min-width: 1440px) {
+    padding: 0 20px;
+    aside {
+      max-width: 360px;
+    }
+  }
 `;
+
 export const CatalogSide = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 32px;
 `;
+
 export const CatalogListAll = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 32px;
   padding-bottom: 30px;
 `;
@@ -30,6 +75,7 @@ export const Subtitle = styled.h5`
   line-height: 24px;
   color: ${theme.colors.gray};
   padding-bottom: 14px;
+  padding-top: 13px;
 `;
 
 export const Redbutton = styled.button`
@@ -44,6 +90,7 @@ export const Redbutton = styled.button`
   font-weight: 600;
   line-height: 20px;
   transition: all 0.3s ease 0s;
+  margin-bottom: 30px;
 
   :hover,
   :active,
@@ -79,7 +126,7 @@ export const Loadmore = styled.button`
 
 export const Towninput = styled.input`
   margin-bottom: 32px;
-  width: 360px;
+  width: 280px;
   height: 56px;
   border-radius: 10px;
   padding-left: 48px;
@@ -106,5 +153,16 @@ export const Towninput = styled.input`
     background-position: 18px 50%;
 
     outline: none;
+  }
+
+  @media screen and (min-width: 836px) {
+    width: 320px;
+  }
+
+  @media screen and (min-width: 1080px) {
+    width: 280px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 360px;
   }
 `;

@@ -4,18 +4,23 @@ import pin_a from '../../img/map-pin.svg';
 import star from '../../img/star-y.svg';
 
 export const CatalogCartWrapper = styled.div`
-  max-width: 338px;
+  max-width: 320px;
+  overflow: hidden;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  padding: 24px;
+  justify-content: center;
+  padding: 17px;
   border-radius: 20px;
   border: solid 1px ${theme.colors.transblack};
   gap: 24px;
   flex-shrink: 1;
 
   @media screen and (min-width: 500px) {
-    max-width: 888px;
+    max-width: 460px;
+  }
+  @media screen and (min-width: 836px) {
+    max-width: 836px;
     margin: 0 auto;
     display: flex;
     flex-direction: row;
@@ -25,10 +30,15 @@ export const CatalogCartWrapper = styled.div`
     gap: 24px;
     flex-shrink: 1;
   }
+  @media screen and (min-width: 1080px) {
+    max-width: 880px;
+    margin-right: 40px;
+    flex-shrink: 1;
+  }
 `;
 
 export const ImgWrapper = styled.div`
-  width: 290px;
+  width: 280px;
   height: 310px;
   border-radius: 10px;
   background-color: ${theme.colors.transblack};
@@ -39,16 +49,34 @@ export const ImgWrapper = styled.div`
     object-fit: cover;
     border-radius: inherit;
   }
+  @media screen and (min-width: 500px) {
+    width: 410px;
+  }
+  @media screen and (min-width: 836px) {
+    width: 260px;
+    height: 290px;
+  }
+  @media screen and (min-width: 1360px) {
+    width: 280px;
+    height: 310px;
+  }
 `;
 
 export const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;
-
+  justify-content: center;
   gap: 20px;
   max-width: 300px;
+
   @media screen and (min-width: 500px) {
-    max-width: 526px;
+    max-width: 410px;
+  }
+  @media screen and (min-width: 836px) {
+    max-width: 426px;
+  }
+  @media screen and (min-width: 1360px) {
+    max-width: 520px;
   }
 `;
 
@@ -56,21 +84,24 @@ export const Firstrow = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   gap: 20px;
 
-  @media screen and (min-width: 837px) {
+  @media screen and (min-width: 836px) {
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 `;
 
 export const FirstrowWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
-
   gap: 10px;
 
   @media screen and (min-width: 500px) {
     justify-content: start;
+    gap: 24px;
   }
 `;
 
@@ -80,6 +111,10 @@ export const TitleCart = styled.h2`
   line-height: 24px;
   color: ${theme.colors.black};
   text-align: center;
+
+  @media screen and (min-width: 500px) {
+    text-align: left;
+  }
 `;
 
 export const PriceCart = styled.h3`
@@ -89,6 +124,9 @@ export const PriceCart = styled.h3`
   color: ${theme.colors.black};
   padding-top: 2px;
   padding-bottom: 20px;
+  @media screen and (min-width: 836px) {
+    padding-bottom: 0px;
+  }
 `;
 
 export const Favotitebtn = styled.button`
