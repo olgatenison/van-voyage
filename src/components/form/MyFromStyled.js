@@ -83,9 +83,12 @@ export const DescriptionForm = styled.p`
   font-size: 16px;
   line-height: 20px;
   color: ${theme.colors.gray};
-  white-space: nowrap;
+
   overflow: hidden;
   padding-bottom: 24px;
+  @media screen and (min-width: 500px) {
+    white-space: nowrap;
+  }
 `;
 
 export const ThinInput = styled.div`

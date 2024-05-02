@@ -80,7 +80,7 @@ export const Subtitle = styled.h5`
 
 export const Redbutton = styled.button`
   display: block;
-  width: 290px;
+  width: 260px;
   height: 56px;
   border-radius: 28px;
   text-decoration: none;

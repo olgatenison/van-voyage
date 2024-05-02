@@ -12,23 +12,26 @@ export const Blackdrop = styled.div`
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.4);
-
-  z-index: 10;
+  z-index: 90;
 `;
 
 // white bg
 export const CatalogCartWrapperModal = styled.div`
-  width: 982px;
-  margin: 30px auto 0;
-  display: flex;
-  flex-direction: column;
-  padding: 40px;
-  padding-right: 30px;
-  border-radius: 20px;
-
-  gap: 34px;
-  flex-shrink: 1;
+  width: 100vw;
+  height: 100vh;
   background-color: ${theme.colors.white};
+  padding: 20px;
+  @media screen and (min-width: 500px) {
+    max-width: 982px;
+    margin: 30px auto 0;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    padding-right: 30px;
+    border-radius: 20px;
+    gap: 34px;
+    flex-shrink: 1;
+  }
 `;
 
 export const FirstrowModal = styled.div`
@@ -37,6 +40,7 @@ export const FirstrowModal = styled.div`
   justify-content: flex-start;
   gap: 16px;
 `;
+
 export const ButtonClose = styled.button`
   background-color: transparent;
   border: none;
@@ -77,11 +81,17 @@ export const ModalSmalWrapp = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+
 export const ImgWrapperModal = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 16px;
   flex-shrink: 1;
+
+  @media screen and (min-width: 837px) {
+    flex-direction: row;
+  }
 `;
 export const TextWrapper = styled.div`
   display: flex;
@@ -153,8 +163,12 @@ export const TabButton = styled.button`
 `;
 
 // left
+
 export const ModalLeftContent = styled.div`
-  width: 50%;
+  width: 100%;
+  @media screen and (min-width: 836px) {
+    width: 50%;
+  }
 `;
 export const FeaturesContent = styled.div`
   display: flex;
@@ -212,13 +226,19 @@ export const ReviewsContent = styled.div`
 
 // right
 export const ModalRightContent = styled.div`
-  flex-grow: 1;
-  width: 50%;
-  height: 532px;
-  margin-right: auto;
-  border-radius: 10px;
-  border: 1px solid ${theme.colors.transblack};
-  padding: 24px;
+  width: 95%;
+  border-top: 1px solid ${theme.colors.transblack};
+  padding-top: 40px;
+
+  @media screen and (min-width: 836px) {
+    flex-grow: 1;
+    width: 50%;
+    height: 532px;
+    margin-right: auto;
+    border-radius: 10px;
+    border: 1px solid ${theme.colors.transblack};
+    padding: 24px;
+  }
 `;
 export const RevieTitle = styled.div`
   display: flex;

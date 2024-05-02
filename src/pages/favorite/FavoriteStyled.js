@@ -10,9 +10,7 @@ export const FavoriteWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 64px;
-  div {
-    margin: 0 auto;
-  }
+
   @media screen and (min-width: 500px) {
     padding: 0 20px;
     justify-content: start;
