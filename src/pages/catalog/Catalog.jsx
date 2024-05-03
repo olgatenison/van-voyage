@@ -11,6 +11,7 @@ import {
   Subtitle,
   Towninput,
   CatalogSide,
+  Option,
 } from './CatalogStyled';
 import { fetchVans } from '../../store/creator';
 
@@ -18,20 +19,40 @@ const Catalog = () => {
   const dispatch = useDispatch();
   const { vans } = useSelector(state => state.vans);
   const [visibleVans, setVisibleVans] = useState([]);
+  const [selectedCity, setSelectedCity] = useState('');
+  const [cities, setCities] = useState([]);
 
   useEffect(() => {
     dispatch(fetchVans());
   }, [dispatch]);
 
   useEffect(() => {
-    setVisibleVans(vans.slice(0, 4));
+    // Создаем список уникальных городов
+    const uniqueCities = [...new Set(vans.map(van => van.location))];
+    setCities(uniqueCities);
   }, [vans]);
 
   const handleLoadMore = () => {
     const currentIndex = visibleVans.length;
     const nextIndex = currentIndex + 4;
-    setVisibleVans([...visibleVans, ...vans.slice(currentIndex, nextIndex)]);
+    setVisibleVans([
+      ...visibleVans,
+      ...filteredVans.slice(currentIndex, nextIndex),
+    ]);
   };
+
+  const handleCityChange = event => {
+    setSelectedCity(event.target.value);
+  };
+
+  // Фильтрация машинок по городу
+  const filteredVans = selectedCity
+    ? vans.filter(van => van.location === selectedCity)
+    : vans;
+
+  useEffect(() => {
+    setVisibleVans(filteredVans.slice(0, 4));
+  }, [filteredVans]);
 
   return (
     <>
@@ -39,7 +60,15 @@ const Catalog = () => {
         <aside>
           <div>
             <Subtitle>Location</Subtitle>
-            <Towninput type="text" placeholder="City" />
+            {/* Используем выпадающий список для выбора города */}
+            <Towninput value={selectedCity} onChange={handleCityChange}>
+              <Option value="">All Cities</Option>
+              {cities.map(city => (
+                <Option key={city} value={city}>
+                  {city}
+                </Option>
+              ))}
+            </Towninput>
           </div>
           <div>
             <Subtitle>Filters</Subtitle>
@@ -50,11 +79,13 @@ const Catalog = () => {
         </aside>
         <CatalogSide>
           <CatalogListAll>
+            {/* Отображаем только отфильтрованные машины */}
             {visibleVans.map(van => (
               <CatalogCart key={van._id} van={van} />
             ))}
           </CatalogListAll>
-          {vans.length > visibleVans.length && (
+          {/* Показываем кнопку "Load more", если есть больше машин для загрузки */}
+          {filteredVans.length > visibleVans.length && (
             <Loadmore onClick={handleLoadMore}>Load more</Loadmore>
           )}
         </CatalogSide>

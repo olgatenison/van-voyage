@@ -18,9 +18,11 @@ export const Blackdrop = styled.div`
 // white bg
 export const CatalogCartWrapperModal = styled.div`
   width: 100vw;
-  height: 100vh;
+  /* height: 100vh; */
   background-color: ${theme.colors.white};
+
   padding: 20px;
+
   @media screen and (min-width: 500px) {
     max-width: 982px;
     margin: 30px auto 0;
@@ -47,8 +49,8 @@ export const ButtonClose = styled.button`
   cursor: pointer;
   display: block;
   svg {
-    width: 32px;
-    height: 32px;
+    width: 20px;
+    height: 20px;
     stroke: ${theme.colors.black};
   }
 `;
@@ -56,8 +58,9 @@ export const ButtonClose = styled.button`
 // here is scroll part
 export const ModalMainContent = styled.div`
   overflow-y: auto;
-  max-height: 600px;
+  max-height: 500px;
   padding-right: 10px;
+  padding-bottom: 60px;
   ::-webkit-scrollbar {
     width: 6px;
   }
@@ -114,7 +117,6 @@ export const ModalTabsZone = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
-
 export const TabWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
@@ -163,7 +165,6 @@ export const TabButton = styled.button`
 `;
 
 // left
-
 export const ModalLeftContent = styled.div`
   width: 100%;
   @media screen and (min-width: 836px) {
@@ -215,7 +216,6 @@ export const VehicleDetailsList = styled.ul`
     }
   }
 `;
-
 export const ReviewsContent = styled.div`
   padding-right: 24px;
   padding-bottom: 24px;
@@ -223,7 +223,6 @@ export const ReviewsContent = styled.div`
   flex-direction: column;
   gap: 24px;
 `;
-
 // right
 export const ModalRightContent = styled.div`
   width: 95%;
@@ -247,7 +246,6 @@ export const RevieTitle = styled.div`
   gap: 16px;
   padding-bottom: 16px;
 `;
-
 export const Avatar = styled.div`
   width: 60px;
   height: 60px;

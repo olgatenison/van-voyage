@@ -124,17 +124,20 @@ export const Loadmore = styled.button`
   }
 `;
 
-export const Towninput = styled.input`
+export const Towninput = styled.select`
   margin-bottom: 32px;
   width: 280px;
   height: 56px;
   border-radius: 10px;
   padding-left: 48px;
+
   padding-top: 3px;
   color: ${theme.colors.black};
   font-size: 18px;
   font-weight: 400;
   line-height: 18px;
+  appearance: none;
+
   &::placeholder {
     color: ${theme.colors.transblack};
     font-size: 18px;
@@ -164,5 +167,19 @@ export const Towninput = styled.input`
   }
   @media screen and (min-width: 1440px) {
     width: 360px;
+  }
+`;
+
+export const Option = styled.option`
+  font-size: 16px;
+  color: ${theme.colors.black};
+  background-color: ${theme.colors.white};
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+
+  & selected {
+    background-color: ${theme.colors.red};
+    color: #fff;
   }
 `;
