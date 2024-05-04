@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Equipment from 'components/equipment/Equipment';
 import Vehicletype from 'components/vehicletype/Vehicletype';
@@ -11,7 +11,7 @@ import {
   Subtitle,
   Towninput,
   CatalogSide,
-  Option,
+  Options,
 } from './CatalogStyled';
 import { fetchVans } from '../../store/creator';
 
@@ -21,13 +21,14 @@ const Catalog = () => {
   const [visibleVans, setVisibleVans] = useState([]);
   const [selectedCity, setSelectedCity] = useState('');
   const [cities, setCities] = useState([]);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
     dispatch(fetchVans());
   }, [dispatch]);
 
   useEffect(() => {
-    // Создаем список уникальных городов
     const uniqueCities = [...new Set(vans.map(van => van.location))];
     setCities(uniqueCities);
   }, [vans]);
@@ -41,11 +42,11 @@ const Catalog = () => {
     ]);
   };
 
-  const handleCityChange = event => {
-    setSelectedCity(event.target.value);
+  const handleCitySelect = city => {
+    setSelectedCity(city);
+    setShowDropdown(false);
   };
 
-  // Фильтрация машинок по городу
   const filteredVans = selectedCity
     ? vans.filter(van => van.location === selectedCity)
     : vans;
@@ -54,21 +55,40 @@ const Catalog = () => {
     setVisibleVans(filteredVans.slice(0, 4));
   }, [filteredVans]);
 
+  useEffect(() => {
+    const handleClickOutside = event => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShowDropdown(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
     <>
       <CatalogSection>
         <aside>
           <div>
             <Subtitle>Location</Subtitle>
-            {/* Используем выпадающий список для выбора города */}
-            <Towninput value={selectedCity} onChange={handleCityChange}>
-              <Option value="">All Cities</Option>
-              {cities.map(city => (
-                <Option key={city} value={city}>
-                  {city}
-                </Option>
-              ))}
-            </Towninput>
+            <div ref={dropdownRef}>
+              <Towninput onClick={() => setShowDropdown(!showDropdown)}>
+                {selectedCity || 'All Cities'}
+              </Towninput>
+              {showDropdown && (
+                <Options>
+                  <li onClick={() => handleCitySelect('')}>All Cities</li>
+                  {cities.map(city => (
+                    <li key={city} onClick={() => handleCitySelect(city)}>
+                      {city}
+                    </li>
+                  ))}
+                </Options>
+              )}
+            </div>
           </div>
           <div>
             <Subtitle>Filters</Subtitle>
@@ -79,12 +99,10 @@ const Catalog = () => {
         </aside>
         <CatalogSide>
           <CatalogListAll>
-            {/* Отображаем только отфильтрованные машины */}
             {visibleVans.map(van => (
               <CatalogCart key={van._id} van={van} />
             ))}
           </CatalogListAll>
-          {/* Показываем кнопку "Load more", если есть больше машин для загрузки */}
           {filteredVans.length > visibleVans.length && (
             <Loadmore onClick={handleLoadMore}>Load more</Loadmore>
           )}

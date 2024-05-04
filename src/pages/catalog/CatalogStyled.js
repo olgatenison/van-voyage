@@ -124,26 +124,27 @@ export const Loadmore = styled.button`
   }
 `;
 
-export const Towninput = styled.select`
-  margin-bottom: 32px;
+export const Towninput = styled.div`
+  position: relative;
+  margin-bottom: 2px;
   width: 280px;
   height: 56px;
   border-radius: 10px;
   padding-left: 48px;
 
-  padding-top: 3px;
+  padding-top: 18px;
   color: ${theme.colors.black};
   font-size: 18px;
   font-weight: 400;
-  line-height: 18px;
-  appearance: none;
+  line-height: 21px;
 
-  &::placeholder {
+  /* &::placeholder {
     color: ${theme.colors.transblack};
     font-size: 18px;
     font-weight: 400;
     line-height: 18px;
-  }
+  } */
+
   background: ${theme.colors.lightgrey} url(${pin_a}) no-repeat;
   background-size: 20px;
   background-position: 18px 50%;
@@ -154,7 +155,6 @@ export const Towninput = styled.select`
     background: ${theme.colors.lightgrey} url(${pin}) no-repeat;
     background-size: 20px;
     background-position: 18px 50%;
-
     outline: none;
   }
 
@@ -170,16 +170,34 @@ export const Towninput = styled.select`
   }
 `;
 
-export const Option = styled.option`
-  font-size: 16px;
-  color: ${theme.colors.black};
-  background-color: ${theme.colors.white};
-  padding: 10px 15px;
+export const Options = styled.ul`
+  position: absolute;
+
+  z-index: 3;
+  width: 280px;
+  border-radius: 10px;
+  font-size: 18px;
+  line-height: 42px;
+  color: ${theme.colors.transblack};
+  background-color: ${theme.colors.lightgrey};
+  padding: 20px 45px;
   border: none;
   cursor: pointer;
 
-  & selected {
-    background-color: ${theme.colors.red};
-    color: #fff;
+  li:hover,
+  li:focus,
+  li:active {
+    color: ${theme.colors.black};
+  }
+
+  @media screen and (min-width: 836px) {
+    width: 320px;
+  }
+
+  @media screen and (min-width: 1080px) {
+    width: 280px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 360px;
   }
 `;
