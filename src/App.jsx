@@ -13,6 +13,7 @@ import Layout from 'components/layout/Layout';
 import Home from 'pages/home/Home';
 import Catalog from 'pages/catalog/Catalog';
 import Favorite from 'pages/favorite/Favorite';
+import Loader from 'components/loader/Loader';
 
 // const Catalog = lazy(() => import('pages/catalog/Catalog'));
 // const Favorite = lazy(() => import('pages/favorite/Favorite'));
@@ -20,7 +21,7 @@ import Favorite from 'pages/favorite/Favorite';
 export const App = () => {
   return (
     <>
-      <Suspense fallback={<>Loading...</>}>
+      <Suspense fallback={<Loader />}>
         <Global styles={globalStyled} />
         <Routes>
           <Route path="/" element={<Layout />}>

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Equipment from 'components/equipment/Equipment';
 import Vehicletype from 'components/vehicletype/Vehicletype';
 import CatalogCart from 'components/catalogcart/Catalogcart';
+import Loader from 'components/loader/Loader'; // Импортируйте ваш компонент лоадера
 import {
   CatalogSection,
   CatalogListAll,
@@ -22,10 +23,11 @@ const Catalog = () => {
   const [selectedCity, setSelectedCity] = useState('');
   const [cities, setCities] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // Новое состояние для отображения загрузки
   const dropdownRef = useRef(null);
 
   useEffect(() => {
-    dispatch(fetchVans());
+    dispatch(fetchVans()).then(() => setIsLoading(false)); // Установите isLoading в false, когда данные загружены
   }, [dispatch]);
 
   useEffect(() => {
@@ -67,6 +69,11 @@ const Catalog = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+
+  if (isLoading) {
+    // Показать лоадер, пока данные загружаются
+    return <Loader />; // Замените временный текст на ваш компонент лоадера
+  }
 
   return (
     <>
