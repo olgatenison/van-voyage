@@ -13,13 +13,13 @@ const Navigation = () => {
     <>
       <NavStyled>
         <NavLinksWrapper>
-          <NavLinkStyled exact to="/" activeClassName="active">
+          <NavLinkStyled to="/" activeclassname="active">
             Home
           </NavLinkStyled>
-          <NavLinkStyled to="/catalog" activeClassName="active">
+          <NavLinkStyled to="/catalog" activeclassname="active">
             Catalog
           </NavLinkStyled>
-          <NavLinkStyled to="/favorite" activeClassName="active">
+          <NavLinkStyled to="/favorite" activeclassname="active">
             Favorite
           </NavLinkStyled>
         </NavLinksWrapper>

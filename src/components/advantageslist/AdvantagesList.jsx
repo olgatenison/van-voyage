@@ -52,10 +52,10 @@ const AdvantagesList = ({ van }) => {
         },
         { label: '', value: gas, svgpath: `${svg}#icon-gas` },
       ].map(
-        ({ label, value, svgpath }) =>
+        ({ label, value, svgpath }, index) =>
           value !== 0 &&
           value !== '' && (
-            <AdvantageItem key={label}>
+            <AdvantageItem key={index}>
               <svg>
                 <use href={svgpath}></use>
               </svg>

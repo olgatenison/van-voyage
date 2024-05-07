@@ -69,7 +69,7 @@ const CatalogCart = ({ van }) => {
             <PlaceCart>{van.location}</PlaceCart>
           </Secondrow>
           <DescriptionCart>{van.description}</DescriptionCart>
-          <AdvantagesListSmall>
+          <AdvantagesListSmall key={van._id}>
             <AdvantagesList van={van} />
           </AdvantagesListSmall>
           <Redbutton onClick={handleShowModal}>Show more</Redbutton>
