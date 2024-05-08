@@ -58,8 +58,11 @@ const Catalog = () => {
     : vans;
 
   useEffect(() => {
-    setVisibleVans(filteredVans.slice(0, 4));
-  }, [vans, selectedCity]);
+    const newVisibleVans = filteredVans.slice(0, 4);
+    if (JSON.stringify(newVisibleVans) !== JSON.stringify(visibleVans)) {
+      setVisibleVans(newVisibleVans);
+    }
+  }, [filteredVans, visibleVans]);
 
   useEffect(() => {
     const handleClickOutside = event => {
@@ -67,7 +70,6 @@ const Catalog = () => {
         setShowDropdown(false);
       }
     };
-
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
