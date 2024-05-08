@@ -26,6 +26,7 @@ const Catalog = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const dropdownRef = useRef(null);
+
   useEffect(() => {
     if (!vans.length) {
       dispatch(fetchVans()).then(() => setIsLoading(false));

@@ -58,7 +58,9 @@ export const Item = styled.li`
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease 0s;
-
+  &.selected {
+    border: 1px solid ${theme.colors.red};
+  }
   @media screen and (min-width: 1080px) {
     width: 114px;
     height: 95px;
