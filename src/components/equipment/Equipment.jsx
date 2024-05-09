@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Title,
   List,
@@ -14,17 +14,19 @@ const Equipment = ({ handleFilters }) => {
   const [selectedCategories, setSelectedCategories] = useState([]);
 
   const toggleCategory = category => {
-    const index = selectedCategories.indexOf(category);
-    if (index === -1) {
-      setSelectedCategories([...selectedCategories, category]);
-    } else {
-      const updatedCategories = selectedCategories.filter(
-        item => item !== category
-      );
-      setSelectedCategories(updatedCategories);
-    }
+    setSelectedCategories(prevCategories => {
+      if (prevCategories.includes(category)) {
+        return prevCategories.filter(item => item !== category);
+      } else {
+        return [...prevCategories, category];
+      }
+    });
   };
-  console.log(selectedCategories);
+
+  useEffect(() => {
+    handleFilters(selectedCategories);
+  }, [selectedCategories, handleFilters]);
+
   return (
     <>
       <Title>Vehicle equipment</Title>
