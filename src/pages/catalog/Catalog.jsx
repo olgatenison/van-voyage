@@ -19,14 +19,14 @@ import { fetchVans } from '../../store/creator';
 const Catalog = () => {
   const dispatch = useDispatch();
   const { vans } = useSelector(state => state.vans);
-  const [visibleVans, setVisibleVans] = useState([]);
-  const [selectedCity, setSelectedCity] = useState('');
-  const [cities, setCities] = useState([]);
-  const [showDropdown, setShowDropdown] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [visibleVans, setVisibleVans] = useState([]); // Список видимих вантажівок
+  const [selectedCity, setSelectedCity] = useState(''); // Обране місто
+  const [cities, setCities] = useState([]); // Міста, доступні для вибору
+  const [showDropdown, setShowDropdown] = useState(false); // Показати випадаючий список
+  const [isLoading, setIsLoading] = useState(true); // Визначає, чи триває завантаження даних
+  const dropdownRef = useRef(null); // Посилання на елемент випадаючого списку
 
-  const dropdownRef = useRef(null);
-
+  // Завантаження вантажівок при першому відображенні компонента або після оновлення списку
   useEffect(() => {
     if (!vans.length) {
       dispatch(fetchVans()).then(() => setIsLoading(false));
@@ -35,11 +35,13 @@ const Catalog = () => {
     }
   }, [dispatch, vans]);
 
+  // Оновлення списку доступних міст при зміні списку вантажівок
   useEffect(() => {
     const uniqueCities = [...new Set(vans.map(van => van.location))];
     setCities(uniqueCities);
   }, [vans]);
 
+  // Функція для завантаження наступної порції вантажівок при натисканні на кнопку "Завантажити ще"
   const handleLoadMore = () => {
     const currentIndex = visibleVans.length;
     const nextIndex = currentIndex + 4;
@@ -49,15 +51,18 @@ const Catalog = () => {
     ]);
   };
 
+  // Функція для вибору міста та фільтрації вантажівок за обраним містом
   const handleCitySelect = city => {
     setSelectedCity(city);
     setShowDropdown(false);
   };
 
+  // Фільтрація вантажівок за обраним містом або відображення всіх вантажівок, якщо місто не обрано
   const filteredVans = selectedCity
     ? vans.filter(van => van.location === selectedCity)
     : vans;
 
+  // Оновлення видимих вантажівок при зміні фільтрованих вантажівок або видимих вантажівок
   useEffect(() => {
     const newVisibleVans = filteredVans.slice(0, 4);
     if (JSON.stringify(newVisibleVans) !== JSON.stringify(visibleVans)) {
@@ -65,6 +70,7 @@ const Catalog = () => {
     }
   }, [filteredVans, visibleVans]);
 
+  // Обробка кліків поза випадаючим списком для його закриття
   useEffect(() => {
     const handleClickOutside = event => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -77,6 +83,7 @@ const Catalog = () => {
     };
   }, []);
 
+  // Відображення завантажувача під час завантаження даних
   if (isLoading) {
     return <Loader />;
   }
