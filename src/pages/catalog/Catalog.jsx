@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Equipment from 'components/equipment/Equipment';
-import Vehicletype from 'components/vehicletype/Vehicletype';
-import CatalogCart from 'components/catalogcart/Catalogcart';
-import Loader from 'components/loader/Loader';
+// import Equipment from 'components/equipment/Equipment';
+// import Vehicletype from 'components/vehicletype/Vehicletype';
+import CatalogCart from 'components/catalogcart/Catalogcart'; // Компонент для отображения элементов каталога
+import Loader from 'components/loader/Loader'; // Компонент для отображения индикатора загрузки
 import {
   CatalogSection,
   CatalogListAll,
@@ -13,20 +13,20 @@ import {
   Towninput,
   CatalogSide,
   Options,
-} from './CatalogStyled';
-import { fetchVans } from '../../store/creator';
+} from './CatalogStyled'; // Стили и компоненты, используемые для стилизации страницы каталога
+import { fetchVans } from '../../store/creator'; // Действие для загрузки товаров из хранилища
 
 const Catalog = () => {
-  const dispatch = useDispatch();
-  const { vans } = useSelector(state => state.vans);
-  const [visibleVans, setVisibleVans] = useState([]); // Список видимих вантажівок
-  const [selectedCity, setSelectedCity] = useState(''); // Обране місто
-  const [cities, setCities] = useState([]); // Міста, доступні для вибору
-  const [showDropdown, setShowDropdown] = useState(false); // Показати випадаючий список
-  const [isLoading, setIsLoading] = useState(true); // Визначає, чи триває завантаження даних
-  const dropdownRef = useRef(null); // Посилання на елемент випадаючого списку
+  const dispatch = useDispatch(); // Хук для получения функции диспетчера Redux
+  const { vans } = useSelector(state => state.vans); // Хук для получения списка товаров из хранилища Redux
+  const [visibleVans, setVisibleVans] = useState([]); // Список видимых товаров
+  const [selectedCity, setSelectedCity] = useState(''); // Выбранный город
+  const [cities, setCities] = useState([]); // Список городов, доступных для выбора
+  const [showDropdown, setShowDropdown] = useState(false); // Флаг для отображения выпадающего списка
+  const [isLoading, setIsLoading] = useState(true); // Флаг загрузки данных
+  const dropdownRef = useRef(null); // Ссылка на элемент выпадающего списка
 
-  // Завантаження вантажівок при першому відображенні компонента або після оновлення списку
+  // Загрузка товаров при первом отображении компонента или после обновления списка
   useEffect(() => {
     if (!vans.length) {
       dispatch(fetchVans()).then(() => setIsLoading(false));
@@ -35,13 +35,13 @@ const Catalog = () => {
     }
   }, [dispatch, vans]);
 
-  // Оновлення списку доступних міст при зміні списку вантажівок
+  // Обновление списка доступных городов при изменении списка товаров
   useEffect(() => {
     const uniqueCities = [...new Set(vans.map(van => van.location))];
     setCities(uniqueCities);
   }, [vans]);
 
-  // Функція для завантаження наступної порції вантажівок при натисканні на кнопку "Завантажити ще"
+  // Функция для загрузки следующей порции товаров при нажатии на кнопку "Загрузить еще"
   const handleLoadMore = () => {
     const currentIndex = visibleVans.length;
     const nextIndex = currentIndex + 4;
@@ -51,18 +51,18 @@ const Catalog = () => {
     ]);
   };
 
-  // Функція для вибору міста та фільтрації вантажівок за обраним містом
+  // Функция для выбора города и фильтрации товаров по выбранному городу
   const handleCitySelect = city => {
     setSelectedCity(city);
     setShowDropdown(false);
   };
 
-  // Фільтрація вантажівок за обраним містом або відображення всіх вантажівок, якщо місто не обрано
+  // Фильтрация товаров по выбранному городу или отображение всех товаров, если город не выбран
   const filteredVans = selectedCity
     ? vans.filter(van => van.location === selectedCity)
     : vans;
 
-  // Оновлення видимих вантажівок при зміні фільтрованих вантажівок або видимих вантажівок
+  // Обновление видимых товаров при изменении фильтрованных товаров или видимых товаров
   useEffect(() => {
     const newVisibleVans = filteredVans.slice(0, 4);
     if (JSON.stringify(newVisibleVans) !== JSON.stringify(visibleVans)) {
@@ -70,7 +70,7 @@ const Catalog = () => {
     }
   }, [filteredVans, visibleVans]);
 
-  // Обробка кліків поза випадаючим списком для його закриття
+  // Обработка кликов вне выпадающего списка для его закрытия
   useEffect(() => {
     const handleClickOutside = event => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -83,7 +83,7 @@ const Catalog = () => {
     };
   }, []);
 
-  // Відображення завантажувача під час завантаження даних
+  // Отображение индикатора загрузки во время загрузки данных
   if (isLoading) {
     return <Loader />;
   }
@@ -112,8 +112,9 @@ const Catalog = () => {
           </div>
           <div>
             <Subtitle>Filters</Subtitle>
-            <Equipment />
-            <Vehicletype />
+            {/* <Equipment />
+
+            <Vehicletype /> */}
             <Redbutton>Search</Redbutton>
           </div>
         </aside>
