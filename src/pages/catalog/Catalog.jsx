@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import Equipment from 'components/equipment/Equipment';
-// import Vehicletype from 'components/vehicletype/Vehicletype';
-import CatalogCart from 'components/catalogcart/Catalogcart'; // Компонент для отображения элементов каталога
-import Loader from 'components/loader/Loader'; // Компонент для отображения индикатора загрузки
+import Equipment from 'components/equipment/Equipment';
+import CatalogCart from 'components/catalogcart/Catalogcart';
+import Loader from 'components/loader/Loader';
 import {
   CatalogSection,
   CatalogListAll,
@@ -13,18 +12,19 @@ import {
   Towninput,
   CatalogSide,
   Options,
-} from './CatalogStyled'; // Стили и компоненты, используемые для стилизации страницы каталога
-import { fetchVans } from '../../store/creator'; // Действие для загрузки товаров из хранилища
+} from './CatalogStyled';
+import { fetchVans } from '../../store/creator';
 
 const Catalog = () => {
-  const dispatch = useDispatch(); // Хук для получения функции диспетчера Redux
-  const { vans } = useSelector(state => state.vans); // Хук для получения списка товаров из хранилища Redux
-  const [visibleVans, setVisibleVans] = useState([]); // Список видимых товаров
+  const dispatch = useDispatch();
+  const { vans } = useSelector(state => state.vans);
+  const [visibleVans, setVisibleVans] = useState([]);
   const [selectedCity, setSelectedCity] = useState(''); // Выбранный город
-  const [cities, setCities] = useState([]); // Список городов, доступных для выбора
-  const [showDropdown, setShowDropdown] = useState(false); // Флаг для отображения выпадающего списка
-  const [isLoading, setIsLoading] = useState(true); // Флаг загрузки данных
-  const dropdownRef = useRef(null); // Ссылка на элемент выпадающего списка
+  const [cities, setCities] = useState([]);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const dropdownRef = useRef(null);
+  const [selectedCategories, setSelectedCategories] = useState([]);
 
   // Загрузка товаров при первом отображении компонента или после обновления списка
   useEffect(() => {
@@ -42,15 +42,26 @@ const Catalog = () => {
   }, [vans]);
 
   // Функция для загрузки следующей порции товаров при нажатии на кнопку "Загрузить еще"
+  // const handleLoadMore = () => {
+  //   const currentIndex = visibleVans.length;
+  //   const nextIndex = currentIndex + 4;
+  //   const newVisibleVans = [
+  //     ...visibleVans,
+  //     ...filteredVans.slice(currentIndex, nextIndex),
+  //   ];
+  //   console.log('Visible vans after load more:', newVisibleVans);
+  //   setVisibleVans(newVisibleVans);
+  // };
   const handleLoadMore = () => {
     const currentIndex = visibleVans.length;
     const nextIndex = currentIndex + 4;
-    setVisibleVans([
+    const newVisibleVans = [
       ...visibleVans,
       ...filteredVans.slice(currentIndex, nextIndex),
-    ]);
+    ];
+    console.log('Visible vans after load more:', newVisibleVans);
+    setVisibleVans(newVisibleVans);
   };
-
   // Функция для выбора города и фильтрации товаров по выбранному городу
   const handleCitySelect = city => {
     setSelectedCity(city);
@@ -83,6 +94,52 @@ const Catalog = () => {
     };
   }, []);
 
+  const handleSearch = () => {
+    // Проверяем, есть ли выбранные категории
+    if (selectedCategories.length === 0) {
+      // Если нет, просто возвращаем все товары
+      setVisibleVans(vans);
+      return;
+    }
+
+    // Фильтрация товаров на основе выбранных категорий
+    const filteredVans = vans.filter(van => {
+      // Проверка каждой категории и соответствующая фильтрация
+      const acFilter =
+        selectedCategories.includes('AC') && van.details.airConditioner !== '';
+      console.log('AC filter:', acFilter);
+
+      const automaticFilter =
+        selectedCategories.includes('Automatic') && van.engine !== '';
+      console.log('Automatic filter:', automaticFilter);
+
+      const kitchenFilter =
+        selectedCategories.includes('Kitchen') && van.details.kitchen !== '';
+      console.log('Kitchen filter:', kitchenFilter);
+
+      const tvFilter =
+        selectedCategories.includes('TV') && van.details.tv !== '';
+      console.log('TV filter:', tvFilter);
+
+      const showerWCFilter =
+        selectedCategories.includes('Shower/WC') &&
+        van.details.shower !== '' &&
+        van.details.toilet !== '';
+
+      return (
+        acFilter ||
+        automaticFilter ||
+        kitchenFilter ||
+        tvFilter ||
+        showerWCFilter
+      );
+    });
+
+    // Обновление списка видимых товаров
+    console.log('Visible vans after search:', filteredVans);
+    setVisibleVans(filteredVans);
+  };
+
   // Отображение индикатора загрузки во время загрузки данных
   if (isLoading) {
     return <Loader />;
@@ -112,10 +169,8 @@ const Catalog = () => {
           </div>
           <div>
             <Subtitle>Filters</Subtitle>
-            {/* <Equipment />
-
-            <Vehicletype /> */}
-            <Redbutton>Search</Redbutton>
+            <Equipment handleFilters={setSelectedCategories} />
+            <Redbutton onClick={handleSearch}>Search</Redbutton>
           </div>
         </aside>
         <CatalogSide>
