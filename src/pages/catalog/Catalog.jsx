@@ -42,26 +42,22 @@ const Catalog = () => {
   }, [vans]);
 
   // Функция для загрузки следующей порции товаров при нажатии на кнопку "Загрузить еще"
-  // const handleLoadMore = () => {
-  //   const currentIndex = visibleVans.length;
-  //   const nextIndex = currentIndex + 4;
-  //   const newVisibleVans = [
-  //     ...visibleVans,
-  //     ...filteredVans.slice(currentIndex, nextIndex),
-  //   ];
-  //   console.log('Visible vans after load more:', newVisibleVans);
-  //   setVisibleVans(newVisibleVans);
-  // };
-  const handleLoadMore = () => {
+  const handleLoadMore = filteredVans => {
     const currentIndex = visibleVans.length;
     const nextIndex = currentIndex + 4;
+    console.log('Current Index:', currentIndex);
+    console.log('Next Index:', nextIndex);
+
     const newVisibleVans = [
       ...visibleVans,
       ...filteredVans.slice(currentIndex, nextIndex),
     ];
-    console.log('Visible vans after load more:', newVisibleVans);
+
+    console.log('New Visible Vans:', newVisibleVans);
+
     setVisibleVans(newVisibleVans);
   };
+
   // Функция для выбора города и фильтрации товаров по выбранному городу
   const handleCitySelect = city => {
     setSelectedCity(city);
@@ -140,6 +136,8 @@ const Catalog = () => {
     setVisibleVans(filteredVans);
   };
 
+  console.log('Visible Vans:', visibleVans);
+
   // Отображение индикатора загрузки во время загрузки данных
   if (isLoading) {
     return <Loader />;
@@ -180,7 +178,9 @@ const Catalog = () => {
             ))}
           </CatalogListAll>
           {filteredVans.length > visibleVans.length && (
-            <Loadmore onClick={handleLoadMore}>Load more</Loadmore>
+            <Loadmore onClick={() => handleLoadMore(filteredVans)}>
+              Load more
+            </Loadmore>
           )}
         </CatalogSide>
       </CatalogSection>
