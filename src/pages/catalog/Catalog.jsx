@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Equipment from 'components/equipment/Equipment';
 import CatalogCart from 'components/catalogcart/Catalogcart';
@@ -19,65 +19,57 @@ const Catalog = () => {
   const dispatch = useDispatch();
   const { vans } = useSelector(state => state.vans);
   const [visibleVans, setVisibleVans] = useState([]);
-  const [selectedCity, setSelectedCity] = useState(''); // Выбранный город
+  const [selectedCity, setSelectedCity] = useState(''); // Selected city
   const [cities, setCities] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const dropdownRef = useRef(null);
   const [selectedCategories, setSelectedCategories] = useState([]);
 
-  // Загрузка товаров при первом отображении компонента или после обновления списка
+  // Load products on first render or when the list updates
   useEffect(() => {
+    const fetchData = async () => {
+      await dispatch(fetchVans());
+      setIsLoading(false);
+    };
+
     if (!vans.length) {
-      dispatch(fetchVans()).then(() => setIsLoading(false));
+      fetchData();
     } else {
       setIsLoading(false);
     }
-  }, [dispatch, vans]);
+  }, [dispatch, vans.length]);
 
-  // Обновление списка доступных городов при изменении списка товаров
+  // Update the list of available cities when the list of products changes
   useEffect(() => {
     const uniqueCities = [...new Set(vans.map(van => van.location))];
     setCities(uniqueCities);
   }, [vans]);
 
-  // Функция для загрузки следующей порции товаров при нажатии на кнопку "Загрузить еще"
-  const handleLoadMore = filteredVans => {
-    const currentIndex = visibleVans.length;
-    const nextIndex = currentIndex + 4;
-    console.log('Current Index:', currentIndex);
-    console.log('Next Index:', nextIndex);
-
-    const newVisibleVans = [
-      ...visibleVans,
-      ...filteredVans.slice(currentIndex, nextIndex),
-    ];
-
-    console.log('New Visible Vans:', newVisibleVans);
-
-    setVisibleVans(newVisibleVans);
-  };
-
-  // Функция для выбора города и фильтрации товаров по выбранному городу
+  // Function to select a city and filter products by the selected city
   const handleCitySelect = city => {
     setSelectedCity(city);
     setShowDropdown(false);
   };
 
-  // Фильтрация товаров по выбранному городу или отображение всех товаров, если город не выбран
-  const filteredVans = selectedCity
-    ? vans.filter(van => van.location === selectedCity)
-    : vans;
+  // Filter products by the selected city or show all products if no city is selected
+  const getFilteredVans = useCallback(() => {
+    return selectedCity
+      ? vans.filter(van => van.location === selectedCity)
+      : vans;
+  }, [selectedCity, vans]);
 
-  // Обновление видимых товаров при изменении фильтрованных товаров или видимых товаров
+  const filteredVans = getFilteredVans();
+
+  // Update the visible products when filtered products change
   useEffect(() => {
     const newVisibleVans = filteredVans.slice(0, 4);
     if (JSON.stringify(newVisibleVans) !== JSON.stringify(visibleVans)) {
       setVisibleVans(newVisibleVans);
     }
-  }, [filteredVans, visibleVans]);
+  }, [filteredVans]);
 
-  // Обработка кликов вне выпадающего списка для его закрытия
+  // Handle clicks outside the dropdown to close it
   useEffect(() => {
     const handleClickOutside = event => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -90,33 +82,22 @@ const Catalog = () => {
     };
   }, []);
 
+  // Handle search functionality based on selected categories
   const handleSearch = () => {
-    // Проверяем, есть ли выбранные категории
     if (selectedCategories.length === 0) {
-      // Если нет, просто возвращаем все товары
-      setVisibleVans(vans);
+      setVisibleVans(filteredVans.slice(0, 4));
       return;
     }
 
-    // Фильтрация товаров на основе выбранных категорий
-    const filteredVans = vans.filter(van => {
-      // Проверка каждой категории и соответствующая фильтрация
+    const newFilteredVans = vans.filter(van => {
       const acFilter =
         selectedCategories.includes('AC') && van.details.airConditioner !== '';
-      console.log('AC filter:', acFilter);
-
       const automaticFilter =
         selectedCategories.includes('Automatic') && van.engine !== '';
-      console.log('Automatic filter:', automaticFilter);
-
       const kitchenFilter =
         selectedCategories.includes('Kitchen') && van.details.kitchen !== '';
-      console.log('Kitchen filter:', kitchenFilter);
-
       const tvFilter =
         selectedCategories.includes('TV') && van.details.tv !== '';
-      console.log('TV filter:', tvFilter);
-
       const showerWCFilter =
         selectedCategories.includes('Shower/WC') &&
         van.details.shower !== '' &&
@@ -131,14 +112,17 @@ const Catalog = () => {
       );
     });
 
-    // Обновление списка видимых товаров
-    console.log('Visible vans after search:', filteredVans);
-    setVisibleVans(filteredVans);
+    setVisibleVans(newFilteredVans.slice(0, 4));
   };
 
-  console.log('Visible Vans:', visibleVans);
+  // Function to load the next batch of products when "Load More" is clicked
+  const handleLoadMore = () => {
+    const currentIndex = visibleVans.length;
+    const nextVans = filteredVans.slice(currentIndex, currentIndex + 4);
+    setVisibleVans(prevVisibleVans => [...prevVisibleVans, ...nextVans]);
+  };
 
-  // Отображение индикатора загрузки во время загрузки данных
+  // Show loading indicator while data is being fetched
   if (isLoading) {
     return <Loader />;
   }
@@ -178,9 +162,7 @@ const Catalog = () => {
             ))}
           </CatalogListAll>
           {filteredVans.length > visibleVans.length && (
-            <Loadmore onClick={() => handleLoadMore(filteredVans)}>
-              Load more
-            </Loadmore>
+            <Loadmore onClick={handleLoadMore}>Load more</Loadmore>
           )}
         </CatalogSide>
       </CatalogSection>
