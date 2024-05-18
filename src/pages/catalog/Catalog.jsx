@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useMemo,
+} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Equipment from 'components/equipment/Equipment';
 import CatalogCart from 'components/catalogcart/Catalogcart';
@@ -59,14 +65,12 @@ const Catalog = () => {
       : vans;
   }, [selectedCity, vans]);
 
-  const filteredVans = getFilteredVans();
+  const filteredVans = useMemo(() => getFilteredVans(), [getFilteredVans]);
 
   // Update the visible products when filtered products change
   useEffect(() => {
     const newVisibleVans = filteredVans.slice(0, 4);
-    if (JSON.stringify(newVisibleVans) !== JSON.stringify(visibleVans)) {
-      setVisibleVans(newVisibleVans);
-    }
+    setVisibleVans(newVisibleVans);
   }, [filteredVans]);
 
   // Handle clicks outside the dropdown to close it
